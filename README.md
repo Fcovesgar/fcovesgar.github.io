@@ -18,7 +18,7 @@ Esta web muestra mis proyectos, trabajos y experiencias como **Técnico Superior
 
 ## Enlaces
 - Accede a la web: [https://fcovesgar.github.io](https://fcovesgar.github.io)  
-- Contacto: [Email (fcovesgar@gmail.com) / Instagram (fcovesgar)]  
+- Contacto: Email fcovesgar@gmail.com
 
 ---
 
