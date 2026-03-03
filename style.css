@@ -12,6 +12,7 @@ body {
     background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
     color: #2c3e50;
     padding: 20px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 768px) {
