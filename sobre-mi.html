@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre mí  - Mi portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Foto y descripción estática */
+      #intro {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4rem 3rem;
+        gap: 2rem;
+        align-items: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        margin: 0 auto 2rem auto;
+        max-width: 1200px;
+      }
+
+      #intro img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-bottom: 1rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.6s ease;
+        cursor: pointer;
+      }
+
+      #intro img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      #intro h1 {
+        font-size: 2.23rem;
+        margin-bottom: 0.75rem;
+      }
+
+      #intro p {
+        font-size: 1.1rem;
+        color: #4b5563;
+        line-height: 1.7;
+        text-align: justify;
+      }
+
+      /* Contenedor principal para barra y secciones */
+      .container {
+        display: flex;
+        flex-direction: row;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      /* Barra vertical */
+      .progress-bar {
+        position: sticky;
+        top: 20px;
+        width: 8px;
+        background: #aabafc;
+        border-radius: 4px;
+        margin-right: 5rem;
+        height: calc(100vh - 40px);
+      }
+
+      .progress-fill {
+        width: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 0%;
+        border-radius: 4px;
+        transition: height 0.2s ease-out;
+      }
+
+      /* Secciones */
+      .sections {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.6s ease-out;
+        margin-bottom: 2rem;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section img {
+        max-height: 40vh; /* que las imágenes no empujen demasiado */
+        width: auto;
+        display: block;
+        margin: 0.5rem auto;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .section p {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .section-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 30px;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        text-align: left;
+      }
+
+      .section-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .experience-card h3 title {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .experience-card ul {
+        margin: 0;
+        margin-top: 1rem;
+        padding-left: 1.2rem;
+        list-style: disc;
+        color: #4b5563;
+        text-align: left;
+      }
+
+      .experience-card ul li {
+        margin-bottom: 0.3rem;
+        color: #4b5563;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        #intro {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 2rem;
+          text-align: center;
+          gap: 0rem;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          border-radius: 8px;
+          margin: 0 auto 2rem auto; /* centrado horizontalmente */
+          max-width: 1200px; /* ancho máximo que quieras */
+        }
+
+        #intro img {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 1rem;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.6s ease;
+          cursor: pointer;
+        }
+
+        #intro h1 {
+          font-size: 1.8rem;
+          margin-bottom: 0.5rem;
+        }
+
+        #intro p {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          text-align: justify;
+        }
+
+        .section h2 {
+          font-size: 1.3rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .section-card h3 {
+          font-size: 1rem;
+        }
+
+        .section-card {
+          text-align: center;
+        }
+
+        .progress-bar {
+          margin-right: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div id="intro">
+      <img src="images/sobre-mi.jpg" alt="Foto de Francisco" />
+      <div>
+        <h1>Algo más sobre mí</h1>
+        <p>
+          Aquí podrás conocer más detalles sobre mi trayectoria laboral y mis habilidades. 
+          He incluido información sobre mis títulos académicos, certificaciones, formación educativa,  y experiencia
+          laboral.
+        </p>
+        <div class="about-actions">
+           <a class="btn visit" href="index.html#projects">
+            Mis Proyectos
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="sections">
+        <section class="section" id="education">
+          <h2>Educación</h2>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">Grado de Enseñanza Secundaria</h3>
+              <h3>(2014-2018)</h3>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">
+                Grado de Bachillerato tecnológico
+              </h3>
+              <h3>(2018-2020)</h3>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">Grado Superior en DAM</h3>
+              <h3>(2020-2023)</h3>
+            </div>
+            <div>
+              <a
+                href="images/Certificado grado superior desarrollo de aplicaciones multiplataforma_page-0001.jpg"
+                alt="Certificado de Grado Superior de Desarrollo de Aplicaciones Multiplataforma"
+                target="_blank"
+                class="btn visit"
+                style="margin-top: 10px"
+                download
+              >
+                Certificado académico
+              </a>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">Grado Superior en DAW</h3>
+              <h3>(2023-2025)</h3>
+            </div>
+            <div>
+              <a
+                href="images/Certificado grado superior desarrollo de aplicaciones web.pdf"
+                alt="Certificado de Grado Superior de desarrollo de aplicaciones web"
+                target="_blank"
+                class="btn visit"
+                style="margin-top: 10px"
+                download
+              >
+                Certificado en trámite
+              </a>
+            </div>
+          </div>
+        </section>
+        <div class="section" id="job">
+          <h2>Experiencia laboral</h2>
+          <div class="section-card">
+            <div class="experience-card">
+              <h3 style="font-weight: 500">Verne Technology Group</h3>
+              <h3 class="title">(Jun 2023 – Dic 2023)</h3>
+              <ul>
+                <li>Teletrabajo</li>
+                <li>
+                  Desarrollo, diseño y despliegue a nivel web y de aplicación
+                </li>
+                <li>Uso de tecnologías de Microsoft</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="section" id="cert">
+          <h2>Otras Certificaciones</h2>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">Inglés B1 - Nivel intermedio</h3>
+            </div>
+            <div>
+              <a
+                href="images/B1 Inglés.jpeg"
+                alt="Certificado de Inglés - B1"
+                target="_blank"
+                class="btn visit"
+                style="margin-top: 10px"
+                download
+              >
+                Certificado de Inglés - B1
+              </a>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">
+                AWS Cloud Techinical Essentials - Fundamentos de la nube
+              </h3>
+            </div>
+            <div>
+              <a
+                href="images/AWS CLoud Technical Essentials.pdf"
+                alt="Certificado de AWS Cloud Technical Essentials"
+                target="_blank"
+                class="btn visit"
+                style="margin-top: 10px"
+                download
+              >
+                Certificado de AWS Cloud Technical Essentials
+              </a>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">
+                Google Analitycs - Análisis de datos web
+              </h3>
+            </div>
+            <div>
+              <a
+                href="images/Google Analitycs.pdf"
+                alt="Certificado de Google Analytics - Análisis de datos web"
+                target="_blank"
+                class="btn visit"
+                style="margin-top: 10px"
+                download
+              >
+                Google Analitycs - Análisis de datos web
+              </a>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">
+                Académia CEAM - Título de Mecanografía
+              </h3>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">
+                Académia CEAM - Título de ofimática
+              </h3>
+            </div>
+          </div>
+          <div class="section-card">
+            <div>
+              <h3 style="font-weight: 500">B2 Junta Qualificadora Valencià</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const sections = document.querySelectorAll(".section");
+      const progressFill = document.getElementById("progressFill");
+
+      // Intersection Observer para animar secciones
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible"); // aparece suavemente
+            } else {
+              entry.target.classList.remove("visible"); // desaparece suavemente al salir
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.2,
+        },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+
+      // Solo barra de progreso, sin tocar visibilidad
+      function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrolled = (scrollTop / docHeight) * 100;
+        progressFill.style.height = scrolled + "%";
+      }
+
+      window.addEventListener("scroll", updateProgress);
+      window.addEventListener("resize", updateProgress);
+      window.addEventListener("load", updateProgress);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Padeldist - Detalle</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../sobre-mi.html">Sobre mí</a></li>
+        <li><a href="../contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <main class="project-detail">
+      <h1>Padeldist</h1>
+
+      <!-- Imagen previa principal -->
+      <section class="main-image">
+        <img
+          src="../images/padeldist/padeldist logo.jpeg"
+          alt="Padeldist - Imagen principal"
+        />
+      </section>
+
+      <!-- Descripción y especificaciones -->
+      <section class="description">
+        <h2>Descripción</h2>
+        <p>
+          Aplicación móvil para la
+          <strong>gestión y reserva de pistas de pádel</strong> en un club
+          deportivo, que permite a los usuarios consultar disponibilidad,
+          realizar reservas y consultar eventos del club.
+        </p>
+      </section>
+
+      <section class="technologies">
+        <h2>Especificaciones Técnicas</h2>
+        <ul>
+          <li><strong>Lenguajes:</strong> Kotlin, XML, JavaScript</li>
+          <li><strong>Frameworks / SDK:</strong> Android SDK, Firebase</li>
+          <li><strong>Herramientas:</strong> Android Studio, Git</li>
+          <li><strong>Arquitectura:</strong> MVVM (Model-View-ViewModel)</li>
+          <li><strong>Base de datos:</strong> Firebase Realtime Database</li>
+        </ul>
+      </section>
+
+      <section class="documentation">
+        <h2>Documentación</h2>
+        <p>Memoria del Trabajo de Fin de Grado para el curso de DAM</p>
+        <a
+          href="../images/padeldist/MemoriaTFG-22_23.pdf"
+          class="btn visit"
+          download
+          >Descargar Memoria (PDF)</a
+        >
+      </section>
+
+      <div class="visit-btn-container">
+        <a class="btn visit" target="_blank">Aplicación móvil no publicada</a>
+      </div>
+
+      <!-- Galería moderna -->
+      <section class="gallery-section">
+        <h2>Galería de imágenes</h2>
+
+        <div class="gallery-modern">
+          <div class="gallery-item" data-index="0">
+            <img
+              src="../images/padeldist/inicio de sesión.jpg"
+              alt="Pantalla de inicio de sesión"
+            />
+            <span class="gallery-label">Inicio de sesión</span>
+          </div>
+          <div class="gallery-item" data-index="1">
+            <img
+              src="../images/padeldist/registro de usuario.jpg"
+              alt="registro de usuario"
+            />
+            <span class="gallery-label">Registro de usuario</span>
+          </div>
+          <div class="gallery-item" data-index="2">
+            <img src="../images/padeldist/inicio.jpg" alt="inicio" />
+            <span class="gallery-label">Inicio</span>
+          </div>
+          <div class="gallery-item" data-index="3">
+            <img
+              src="../images/padeldist/búsqueda de pista.jpg"
+              alt="Búsqueda de pista"
+            />
+            <span class="gallery-label">Búsqueda de pista</span>
+          </div>
+          <div class="gallery-item" data-index="4">
+            <img
+              src="../images/padeldist/sección de pistas.jpg"
+              alt="Sección de pistas"
+            />
+            <span class="gallery-label">Sección de pistas</span>
+          </div>
+          <div class="gallery-item" data-index="6">
+            <img
+              src="../images/padeldist/personalización.jpg"
+              alt="Personalización de perfil"
+            />
+            <span class="gallery-label">Personalización de perfil</span>
+          </div>
+          <div class="gallery-item" data-index="7">
+            <img
+              src="../images/padeldist/configuración.jpg"
+              alt="configuración de cuenta"
+            />
+            <span class="gallery-label">Configuración de cuenta</span>
+          </div>
+        </div>
+
+        <!-- Modal Lightbox -->
+        <div id="lightbox" class="lightbox">
+          <button class="lightbox-close">&times;</button>
+          <div class="lightbox-title" id="lightbox-title"></div>
+          <div class="lightbox-wrapper">
+            <button class="lightbox-prev">&#10094;</button>
+            <div class="lightbox-container">
+              <img id="lightbox-img" alt="" />
+            </div>
+            <button class="lightbox-next">&#10095;</button>
+          </div>
+          <div class="lightbox-controls">
+            <span class="lightbox-counter"
+              ><span id="current-img">1</span> /
+              <span id="total-img">8</span></span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+      const currentImgSpan = document.getElementById("current-img");
+      let currentIndex = 0;
+      let imagesSrc = [];
+
+      // Obtener todas las imágenes
+      galleryItems.forEach((item, index) => {
+        imagesSrc.push(item.querySelector("img").src);
+        item.addEventListener("click", () => {
+          currentIndex = index;
+          openLightbox();
+        });
+      });
+      // actualizar contador total
+      document.getElementById("total-img").textContent = imagesSrc.length;
+
+      function openLightbox() {
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // set title text
+        const titleText =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+        document.getElementById("lightbox-title").textContent = titleText;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % imagesSrc.length;
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // update title
+        document.getElementById("lightbox-title").textContent =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + imagesSrc.length) % imagesSrc.length;
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // update title
+        document.getElementById("lightbox-title").textContent =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+      }
+
+      // Event listeners
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightboxNext.addEventListener("click", nextImage);
+      lightboxPrev.addEventListener("click", prevImage);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Teclado
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "ArrowLeft") prevImage();
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "Escape") closeLightbox();
+        // zoom keyboard removed
+      });
+    </script>
+  </body>
+</html>

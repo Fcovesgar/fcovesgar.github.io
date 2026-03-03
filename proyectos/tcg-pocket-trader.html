@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TCG Pocket Trader - Detalle</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../sobre-mi.html">Sobre mí</a></li>
+        <li><a href="../contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <main class="project-detail">
+      <h1>TCG Pocket Trader</h1>
+
+      <!-- Imagen previa principal -->
+      <section class="main-image">
+        <img
+          src="../images/tcg pocket trader/TCG Pocket Trader.png"
+          alt="TCG Pocket Trader - Imagen principal"
+        />
+      </section>
+
+      <!-- Descripción y especificaciones -->
+      <section class="description">
+        <h2>Descripción</h2>
+        <p>
+          Plataforma web orientada a la comunidad de jugadores de
+          <strong>Pokémon TCG Pocket</strong>, diseñada para la visualización e
+          intercambio de cartas. Incluye información y filtrado avanzado de las
+          cartas, sistema de intercambios, mensajería en tiempo real,
+          personalización de perfiles y gestión de amigos. Cuenta con un diseño
+          adaptable para todo tipo de dispositivos.
+        </p>
+      </section>
+
+      <section class="technologies">
+        <h2>Especificaciones Técnicas</h2>
+        <ul>
+          <li>
+            <strong>Lenguajes:</strong> PHP, JavaScript, MySQL, HTML5, CSS, JSX
+          </li>
+          <li><strong>Frameworks:</strong> Laravel, React, Tailwind CSS</li>
+          <li><strong>Herramientas:</strong> Composer, npm, Git</li>
+          <li><strong>Arquitectura:</strong> API REST</li>
+          <li>
+            <strong>Servicios externos:</strong> Pusher (WebSockets), Cloudinary
+            (almacenamiento en la nube)
+          </li>
+        </ul>
+      </section>
+
+      <section class="documentation">
+        <h2>Documentación</h2>
+        <p>Memoria del Trabajo de Fin de Grado para el curso de DAW</p>
+        <a
+          href="../images/tcg pocket trader/MemoriaTFG-24_25.pdf"
+          class="btn visit"
+          download
+          >Descargar Memoria (PDF)</a
+        >
+        <div class="info-note">
+          <strong>Nota:</strong> En la memoria del TFG la web figura bajo otro
+          nombre, ya que fue desarrollada antes de ser renombrada y publicada
+          como "TCG Pocket Trader"
+        </div>
+      </section>
+
+      <div class="visit-btn-container">
+        <a href="https://tcgpockettrader.com" class="btn visit" target="_blank"
+          >Visitar sitio web 🌐</a
+        >
+      </div>
+
+      <!-- Galería moderna -->
+      <section class="gallery-section">
+        <h2>Galería de imágenes</h2>
+
+        <div class="gallery-modern">
+          <div class="gallery-item" data-index="0">
+            <img
+              src="../images/tcg pocket trader/inicio.png"
+              alt="Pantalla de inicio"
+            />
+            <span class="gallery-label">Inicio</span>
+          </div>
+          <div class="gallery-item" data-index="1">
+            <img
+              src="../images/tcg pocket trader/filtrado.png"
+              alt="Sistema de filtrado"
+            />
+            <span class="gallery-label">Filtrado avanzado de cartas</span>
+          </div>
+          <div class="gallery-item" data-index="2">
+            <img
+              src="../images/tcg pocket trader/sección de cartas.png"
+              alt="Sección de cartas"
+            />
+            <span class="gallery-label">Cartas</span>
+          </div>
+          <div class="gallery-item" data-index="3">
+            <img
+              src="../images/tcg pocket trader/crear propuesta.png"
+              alt="Sección de intercambios"
+            />
+            <span class="gallery-label">Crear propuesta de intercambio</span>
+          </div>
+          <div class="gallery-item" data-index="4">
+            <img
+              src="../images/tcg pocket trader/sección de intercambios.png"
+              alt="Sección de intercambios"
+            />
+            <span class="gallery-label">Sección de intercambios</span>
+          </div>
+          <div class="gallery-item" data-index="5">
+            <img
+              src="../images/tcg pocket trader/datos de un intercambio.png"
+              alt="Datos de un intercambio"
+            />
+            <span class="gallery-label">Detalles de una propuesta</span>
+          </div>
+          <div class="gallery-item" data-index="6">
+            <img
+              src="../images/tcg pocket trader/chat.png"
+              alt="Sección de chat"
+            />
+            <span class="gallery-label">Chat entre usuarios</span>
+          </div>
+          <div class="gallery-item" data-index="7">
+            <img
+              src="../images/tcg pocket trader/Seccion de amigos.png"
+              alt="Sección de amigos"
+            />
+            <span class="gallery-label">Sección de amigos</span>
+          </div>
+        </div>
+
+        <!-- Modal Lightbox -->
+        <div id="lightbox" class="lightbox">
+          <button class="lightbox-close">&times;</button>
+          <div class="lightbox-title" id="lightbox-title"></div>
+          <div class="lightbox-wrapper">
+            <button class="lightbox-prev">&#10094;</button>
+            <div class="lightbox-container">
+              <img id="lightbox-img" alt="" />
+            </div>
+            <button class="lightbox-next">&#10095;</button>
+          </div>
+          <div class="lightbox-controls">
+            <span class="lightbox-counter"
+              ><span id="current-img">1</span> /
+              <span id="total-img">8</span></span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+      const currentImgSpan = document.getElementById("current-img");
+      let currentIndex = 0;
+      let imagesSrc = [];
+
+      // Obtener todas las imágenes
+      galleryItems.forEach((item, index) => {
+        imagesSrc.push(item.querySelector("img").src);
+        item.addEventListener("click", () => {
+          currentIndex = index;
+          openLightbox();
+        });
+      });
+      // actualizar contador total
+      document.getElementById("total-img").textContent = imagesSrc.length;
+
+      function openLightbox() {
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // set title text
+        const titleText =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+        document.getElementById("lightbox-title").textContent = titleText;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % imagesSrc.length;
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // update title
+        document.getElementById("lightbox-title").textContent =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + imagesSrc.length) % imagesSrc.length;
+        lightboxImg.src = imagesSrc[currentIndex];
+        currentImgSpan.textContent = currentIndex + 1;
+        // update title
+        document.getElementById("lightbox-title").textContent =
+          galleryItems[currentIndex].querySelector(
+            ".gallery-label",
+          ).textContent;
+      }
+
+      // Event listeners
+      lightboxClose.addEventListener("click", closeLightbox);
+      lightboxNext.addEventListener("click", nextImage);
+      lightboxPrev.addEventListener("click", prevImage);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Teclado
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "ArrowLeft") prevImage();
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "Escape") closeLightbox();
+        // zoom keyboard removed
+      });
+    </script>
+  </body>
+</html>
