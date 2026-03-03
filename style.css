@@ -16,7 +16,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    padding: 40px;
+    padding: 20px;
 }
 
 }
@@ -50,34 +50,45 @@ nav a:hover {
 
 @media (max-width: 768px) {
 
-  nav ul {
-    width: 100%;
-    gap: 0;
-    display: flex;
-  }
+    nav ul {
+        width: 100%;
+        gap: 0;
+        display: flex;
+    }
 
-  nav li {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    padding: 0 10px;
-  }
+    nav {
+        padding: 10px 0;
+        border-radius: 6px;
+        margin-bottom: 50px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
 
-  nav li::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 20px;
-    width: 2px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 10px;
-  }
+    nav li {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        padding: 0 10px;
+    }
 
-  nav li:last-child::after {
-    display: none;
-  }
+    nav li::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 20px;
+        width: 2px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 10px;
+    }
+
+    nav li:last-child::after {
+        display: none;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
 
 }
 
@@ -159,28 +170,35 @@ nav a:hover {
 /* Responsive */
 @media (max-width: 768px) {
 
-  #about {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    padding: 2rem 2rem;
-  }
+    #about {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 1.5rem 1.5rem;
+    }
 
-  #about img {
-    width: 200px;
-    height: 200px;
-  }
+    #about img {
+        width: 150px;
+        height: 150px;
+    }
 
-  .about-text h1 {
-    font-size: 2rem;
-  }
+    .about-text h1 {
+        font-size: 1.5rem;
+    }
 
-  .about-actions {
-    margin-top: 0px;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
+    .about-text p {
+        font-size: 1rem;
+        color: #4b5563;
+        line-height: 1.7;
+        text-align: justify;
+    }
+
+    .about-actions {
+        margin-top: 0px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
 
     .social-links a img {
         max-width: 40px;
@@ -190,6 +208,7 @@ nav a:hover {
         justify-content: end;
     }
 }
+
 /* Sección de proyectos */
 #projects {
     max-width: 1400px;
