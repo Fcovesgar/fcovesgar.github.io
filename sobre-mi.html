@@ -7,7 +7,6 @@
     <link rel="icon" href="/images/favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css" />
     <style>
-      /* Foto y descripción estática */
       #intro {
         display: flex;
         flex-direction: row;
@@ -52,7 +51,6 @@
         text-align: justify;
       }
 
-      /* Contenedor principal para barra y secciones */
       .container {
         display: flex;
         flex-direction: row;
@@ -62,7 +60,6 @@
         padding: 2rem 0;
       }
 
-      /* Barra vertical */
       .progress-bar {
         position: sticky;
         top: 20px;
@@ -81,7 +78,6 @@
         transition: height 0.2s ease-out;
       }
 
-      /* Secciones */
       .sections {
         flex: 1;
         display: flex;
@@ -101,7 +97,7 @@
       }
 
       .section img {
-        max-height: 40vh; /* que las imágenes no empujen demasiado */
+        max-height: 40vh;
         width: auto;
         display: block;
         margin: 0.5rem auto;
@@ -149,7 +145,6 @@
         color: #4b5563;
       }
 
-      /* Responsive */
       @media (max-width: 768px) {
         #intro {
           display: flex;
@@ -162,8 +157,8 @@
           background: #fff;
           border: 1px solid #e2e8f0;
           border-radius: 1rem;
-          margin: 0 auto 2rem auto; /* centrado horizontalmente */
-          max-width: 1200px; /* ancho máximo que quieras */
+          margin: 0 auto 2rem auto;
+          max-width: 1200px;
         }
 
         #intro img {
@@ -392,14 +387,13 @@
       const sections = document.querySelectorAll(".section");
       const progressFill = document.getElementById("progressFill");
 
-      // Intersection Observer para animar secciones
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("visible"); // aparece suavemente
+              entry.target.classList.add("visible");
             } else {
-              entry.target.classList.remove("visible"); // desaparece suavemente al salir
+              entry.target.classList.remove("visible");
             }
           });
         },
@@ -412,7 +406,6 @@
 
       sections.forEach((section) => observer.observe(section));
 
-      // Solo barra de progreso, sin tocar visibilidad
       function updateProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.body.scrollHeight - window.innerHeight;

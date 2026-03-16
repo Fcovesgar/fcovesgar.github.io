@@ -18,7 +18,6 @@
     <main class="project-detail">
       <h1>Padeldist</h1>
 
-      <!-- Imagen previa principal -->
       <section class="main-image">
         <img
           src="../images/padeldist/padeldist logo.jpeg"
@@ -26,7 +25,6 @@
         />
       </section>
 
-      <!-- Descripción y especificaciones -->
       <section class="description">
         <h2>Descripción</h2>
         <p>
@@ -63,7 +61,6 @@
         <a class="btn visit" target="_blank">Aplicación móvil no publicada</a>
       </div>
 
-      <!-- Galería moderna -->
       <section class="gallery-section">
         <h2>Galería de imágenes</h2>
 
@@ -116,7 +113,6 @@
           </div>
         </div>
 
-        <!-- Modal Lightbox -->
         <div id="lightbox" class="lightbox">
           <button class="lightbox-close">&times;</button>
           <div class="lightbox-title" id="lightbox-title"></div>
@@ -148,7 +144,6 @@
       let currentIndex = 0;
       let imagesSrc = [];
 
-      // Obtener todas las imágenes
       galleryItems.forEach((item, index) => {
         imagesSrc.push(item.querySelector("img").src);
         item.addEventListener("click", () => {
@@ -156,13 +151,11 @@
           openLightbox();
         });
       });
-      // actualizar contador total
       document.getElementById("total-img").textContent = imagesSrc.length;
 
       function openLightbox() {
         lightboxImg.src = imagesSrc[currentIndex];
         currentImgSpan.textContent = currentIndex + 1;
-        // set title text
         const titleText =
           galleryItems[currentIndex].querySelector(
             ".gallery-label",
@@ -181,7 +174,6 @@
         currentIndex = (currentIndex + 1) % imagesSrc.length;
         lightboxImg.src = imagesSrc[currentIndex];
         currentImgSpan.textContent = currentIndex + 1;
-        // update title
         document.getElementById("lightbox-title").textContent =
           galleryItems[currentIndex].querySelector(
             ".gallery-label",
@@ -192,14 +184,12 @@
         currentIndex = (currentIndex - 1 + imagesSrc.length) % imagesSrc.length;
         lightboxImg.src = imagesSrc[currentIndex];
         currentImgSpan.textContent = currentIndex + 1;
-        // update title
         document.getElementById("lightbox-title").textContent =
           galleryItems[currentIndex].querySelector(
             ".gallery-label",
           ).textContent;
       }
 
-      // Event listeners
       lightboxClose.addEventListener("click", closeLightbox);
       lightboxNext.addEventListener("click", nextImage);
       lightboxPrev.addEventListener("click", prevImage);
@@ -207,13 +197,11 @@
         if (e.target === lightbox) closeLightbox();
       });
 
-      // Teclado
       document.addEventListener("keydown", (e) => {
         if (!lightbox.classList.contains("active")) return;
         if (e.key === "ArrowLeft") prevImage();
         if (e.key === "ArrowRight") nextImage();
         if (e.key === "Escape") closeLightbox();
-        // zoom keyboard removed
       });
     </script>
   </body>
